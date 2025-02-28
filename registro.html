@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción</title>
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7861/7861745.png" type="image/x-icon">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #FFFFFF; /* Fondo blanco */
+      color: #333333; /* Texto oscuro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px;
+      background: #FFFFFF; /* Fondo blanco */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid #E0E0E0; /* Borde gris claro */
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 80px; /* Tamaño del logo */
+      height: auto;
+    }
+
+    h4 {
+      text-align: center;
+      color: #2563EB; /* Azul */
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #2563EB; /* Azul */
+    }
+
+    .required {
+      color: #FF0000;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #2563EB; /* Borde azul */
+      background: #FFFFFF; /* Fondo blanco */
+      color: #2563EB; /* Texto azul */
+      font-size: 16px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
+      color: rgba(37, 99, 235, 0.7); /* Placeholder azul con transparencia */
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+      border-color: #1E40AF; /* Azul más oscuro al enfocar */
+      outline: none;
+    }
+
+    select {
+      appearance: none; /* Elimina el estilo por defecto del select */
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563EB'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background: #2563EB; /* Azul */
+      color: #FFFFFF; /* Texto blanco */
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #1E40AF; /* Azul más oscuro al pasar el mouse */
+      transform: translateY(-2px);
+    }
+
+    input[type="submit"]:disabled {
+      background: #93C5FD; /* Azul claro cuando está desactivado */
+      cursor: not-allowed;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #FFFFFF; /* Fondo blanco */
+      color: #333333; /* Texto oscuro */
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content .logo img {
+      width: 60px; /* Tamaño del logo en el modal */
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #2563EB; /* Azul */
+    }
+
+    .modal-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #2563EB; /* Azul */
+      color: #FFFFFF; /* Texto blanco */
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #1E40AF; /* Azul más oscuro al pasar el mouse */
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h4 {
+        font-size: 24px;
+      }
+
+      input[type="submit"] {
+        font-size: 16px;
+      }
+
+      label {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/7861/7861745.png" alt="Logo"> <!-- Reemplaza con la URL de tu logo -->
+    </div>
+    <form method="post" action="" name="inscripcion-form" id="inscripcion-form">
+      <h4>Inscripción Estudiantil</h4>
+
+      <label for="email">Correo <span class="required">*</span></label>
+      <input type="email" name="email" id="email" placeholder="Ingrese su correo" required>
+
+      <label for="curso">Selecciona Curso <span class="required">*</span></label>
+      <select name="curso" id="curso" required>
+        <option value="" disabled selected>Seleccione...</option>
+        <option value="Ingles">Curso Inglés</option>
+        <option value="Canva">Curso Canva</option>
+        <option value="Induccion">Curso Inducción</option>
+      </select>
+
+      <label for="password">Crea una Contraseña <span class="required">*</span></label>
+      <input type="password" name="password" id="password" placeholder="Ej: Contraseña1" pattern="^(?=.*[A-Z])(?=.*\d).{8,}$" title="Debe contener al menos una mayúscula, un dígito y máximo 8 caracteres" required>
+
+      <label for="username">Nombre de Usuario <span class="required">*</span></label>
+      <input type="text" name="username" id="username" placeholder="Ej: TUNOMBRE32" required>
+
+      <label for="nombre">Nombre y Apellido <span class="required">*</span></label>
+      <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre y apellido" required>
+
+      <label for="referencia">¿Cómo te enteraste del curso? <span class="required">*</span></label>
+      <select name="referencia" id="referencia" required>
+        <option value="" disabled selected>Seleccione...</option>
+        <option value="Redes Sociales">Redes Sociales</option>
+        <option value="Grupo Telegram">Grupo Telegram</option>
+        <option value="Amigos">Amigos me recomendaron</option>
+      </select>
+
+      <input type="submit" value="Enviar" id="submit">
+    </form>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/7861/7861745.png" alt="Logo"> <!-- Reemplaza con la URL de tu logo -->
+      </div>
+      <h3>¡Inscripción Exitosa!</h3>
+      <p>ESTAS EN PROCESO DE REGISTRO AL CAMPUS</p>
+      <p>¡Hola!🎉 En menos de 10 minutos, recibirás un correo con tus credenciales y la confirmación de que tu registro fue exitoso.📧✨ ¡Tranquilo! Tus créditos esenciales para el campus virtual estarán habilitados en cuantos recibas el correo.📚🔑Por favor , mantente atento a tu bandeja de entrada. Si tienes alguna otra duda, no dudes en comunicarte con un asesor.🤝💬 ¡Estamos aquí para ayudarte! </p>
+      <button onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbznXtqufpGO0FCVw_nz2l4LS1y9_XTorCaIvx29npWQ8HIisyvsN9Y1SMLEzVmhAtOJxA/exec'; // Reemplaza con tu URL de Google Apps Script
+    const form = document.getElementById('inscripcion-form');
+    const modal = document.getElementById('modal');
+    const submitButton = document.getElementById('submit');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      submitButton.disabled = true; // Desactiva el botón para evitar múltiples clics
+      submitButton.value = "Enviando..."; // Cambia el texto del botón
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          showModal();
+          form.reset();
+          submitButton.disabled = false; // Reactiva el botón después de enviar
+          submitButton.value = "Enviar"; // Restaura el texto del botón
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          submitButton.disabled = false; // Reactiva el botón en caso de error
+          submitButton.value = "Enviar"; // Restaura el texto del botón
+        });
+    });
+
+    function showModal() {
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      window.location.href = "https://eduvirtual0.github.io/edulvirtualonline/"; <!-- Reemplaza con tu enlace -->
+    }
+  </script>
+</body>
+</html>
